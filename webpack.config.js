@@ -1,5 +1,5 @@
 const path = require('path');
-const MiniCssExtractPlugin = reuqire('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
@@ -9,6 +9,11 @@ const modExp = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[contenthash].bundle.js'
   },
+
+  devServer: {
+    port: 9000,
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -39,15 +44,13 @@ const modExp = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        options: {
-          presets: [
-            [
-              '@babel/preset-env',
-              
-            ]
-          ]
-        }
+      },
+      {
+        test: /\.(jpe?g|png)$/,
+        type: 'asset/resource'
       }
     ]
   }
 }
+
+module.exports = modExp;
