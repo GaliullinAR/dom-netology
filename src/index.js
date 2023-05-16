@@ -4,7 +4,7 @@ import GameLogic from './js/GameLogic';
 import img from './images/goblin.png';
 
 const game = new GameLogic('wrapper', img,  {
-  // level: 'middle'
+  level: 'middle'
 });
 
 game.interval();

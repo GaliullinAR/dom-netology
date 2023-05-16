@@ -43,26 +43,41 @@ export default class GameLogic {
       case 'hard':
         return 200;
       default:
-        return 1000; 
+        return 2000; 
     }
   }
 
-  addClassActive() {
+  classActive() {
     const activeSector = document.querySelector('.goblin-img').parentElement;
-    activeSector.classList.add('active'); 
+    if (activeSector.classList.contains('active')) {
+      activeSector.classList.remove('active'); 
+    } else {
+      activeSector.classList.add('active');
+    }
   }
 
   interval() {
-    let rndm = this.randomNumber;
-    const childs = this.selector.children;
+    let lastIndex = null;
 
-    const changeInterval = setInterval(() => {
-      if (rndm !== this.randomNumber) {
-        // childs[rndm].appendChild(this.imgElement);
+    const childs = Array.from(this.selector.children);
+    const intrevalSelectGoblin = setInterval(() => {
+      let index = this.randomNumber;
+      if (lastIndex !== null) {
+        childs[lastIndex].querySelector('img').remove();
       }
-    }, this.getLevelInterval) 
 
-    console.log(this.getLevelInterval);
+      if (index === lastIndex) {
+        index = this.randomNumber;
+      }
+      
+      childs[index].appendChild(this.imgElement);
+
+      lastIndex = index;
+      
+      
+
+    }, this.getLevelInterval);
+
   }
 
 }
