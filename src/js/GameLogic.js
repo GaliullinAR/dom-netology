@@ -60,7 +60,7 @@ export default class GameLogic {
     let lastIndex = null;
 
     const childs = Array.from(this.selector.children);
-    const intrevalSelectGoblin = setInterval(() => {
+    setInterval(() => {
       let index = this.randomNumber;
       if (lastIndex !== null) {
         childs[lastIndex].querySelector('img').remove();
