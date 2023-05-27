@@ -2,7 +2,7 @@ export default class GameLogic {
   constructor(selector, img, options = {}) {
     if (typeof selector === 'string' && selector[0] === '.') {
       this.selector = document.querySelector(selector);
-    } else if (typeof selector === 'string' && selector !== '.') {
+    } else if (typeof selector === 'string' && selector[0] !== '.') {
       this.selector = document.querySelector(`.${selector}`);
     } else {
       throw new Error('Не правильно был передан селектор');
